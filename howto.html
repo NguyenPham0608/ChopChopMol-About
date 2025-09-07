@@ -3,656 +3,117 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChopChopMol Premium - Unlock All Features</title>
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <title>Sliding Image Gallery</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #061335 0%, #1d1948 50%, #043853 100%);
-            min-height: 100vh;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo i {
-            color: #FFD700;
-            font-size: 28px;
-        }
-
-        .back-btn {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-5px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 150px 50px 80px;
-            text-align: center;
-            position: relative;
-        }
-
-        .premium-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #FFD700 50%, #FFA500 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: #b8b8b8;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        /* Pricing Cards */
-        .pricing-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            padding: 0 50px;
-            margin-bottom: 80px;
-            flex-wrap: wrap;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #111;
+            font-family: sans-serif;
         }
 
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
+        .gallery {
             width: 400px;
+            height: 250px;
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .pricing-card.recommended {
-            border-color: rgba(255, 215, 0, 0.5);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.recommended::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .plan-name {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 20px 0;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-        }
-
-        .price .currency {
-            font-size: 24px;
-            margin-right: 5px;
-            color: #FFD700;
-        }
-
-        .price .period {
-            font-size: 18px;
-            color: #888;
-            margin-left: 5px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 30px 0;
-        }
-
-        .features-list li {
-            padding: 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #ddd;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-
-        .features-list i {
-            color: #4CAF50;
-            font-size: 16px;
-        }
-
-        .features-list .disabled {
-            color: #666;
-        }
-
-        .features-list .disabled i {
-            color: #666;
-        }
-
-        .cta-button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .cta-button.primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .cta-button.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta-button.secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .cta-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* Features Grid */
-        .features-section {
-            padding: 80px 50px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .features-section h2 {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 60px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .feature-card i {
-            font-size: 48px;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .feature-card p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 80px 50px;
-            max-width: 800px;
-            margin: 0 auto;
-
-        }
-
-        .faq-section h2 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 20px;
             overflow: hidden;
-            transition: all 0.3s ease;
-
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
+        .gallery img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .gallery img.hidden-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .gallery img.hidden-right {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .gallery img.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            transform: translateY(-50%);
+            padding: 0 10px;
         }
 
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            transition: all 0.3s ease;
-            color: #aaa;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 500px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 40px 50px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
-        }
-
-        .footer a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .hero {
-                padding: 120px 20px 60px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .pricing-container {
-                padding: 0 20px;
-            }
-
-            .pricing-card {
-                width: 100%;
-            }
-
-            .features-section {
-                padding: 60px 20px;
-            }
-
-            .faq-section {
-                padding: 60px 20px;
-            }
-        }
-
-        /* Loading Spinner */
-        .loading-spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading .loading-spinner {
-            display: block;
-        }
-
-        .loading .btn-text {
-            display: none;
-        }
-
-        img {
-            margin-top: 20px;
-            border-radius: 10px;
+        button:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <i class="fas fa-atom"></i>
-            ChopChopMol
-        </a>
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-arrow-left"></i>
-            Try it free!
-        </a>
-    </nav>
+    <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
+            class="active">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443n_Retriever_Puppy.jpg"
+            class="hidden-right">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bright_sunset_over_ocean.jpg"
+            class="hidden-right">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- <span class="premium-badge">
-            <i class="fas fa-gem"></i> PREMIUM FEATURES
-        </span> -->
-        <h1>Unlock the Full Power of ChopChopMol</h1>
-        <p>Learn how to use ChopChopMol, a powerful tool for visualizing and editing molecules. Learn the key features
-            as well as some tips to get the most out of it.</p>
-    </section>
-
-
-    <section class="faq-section">
-        <h2>Main Features</h2>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <span>How do you open a file?</span>
-                <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                In ChopChopMol, there are multiple ways to open a file. It supports the XYZ, MOL2, and PDB file format
-                as of now. You can navigate to the upload dropdown <i class="fa-solid fa-download"></i> and select "Open
-                File", or you can simply drag and drop a file into the page.
-
-                <img src="openfile-demo.png" width="30%" height="30%">
-            </div>
+        <div class="controls">
+            <button onclick="prevImage()">◀</button>
+            <button onclick="nextImage()">▶</button>
         </div>
+    </div>
 
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <span>Can I cancel anytime?</span>
-                <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                Yes! You can cancel your subscription at any time. You'll continue to have access to premium features
-                until the end of your billing period.
-                <img
-                    src="https://media.istockphoto.com/id/185311615/photo/slice-of-orange.jpg?s=612x612&w=0&k=20&c=QUhNgSW4EjoojYIhFBOC53D423eJqqBxu5FZYw6ZP9M=">
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <span>What payment methods do you accept?</span>
-                <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                We accept all major credit cards, debit cards, and digital wallets through our secure payment processor,
-                Stripe.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <span>Is my data secure?</span>
-                <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                Absolutely! We use industry-standard encryption and security practices. Your molecules and personal data
-                are stored securely in the cloud with automatic backups.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <span>Do I need to sign in to use premium features?</span>
-                <i class="fas fa-chevron-down faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                Yes, you need to sign in with Google to access premium features and maintain your subscription. This
-                allows us to sync your data across devices.
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 ChopChopMol. All rights reserved.</p>
-        <p>
-            <a href="#">Terms of Service</a> •
-            <a href="#">Privacy Policy</a> •
-            <a href="#">Contact Support</a>
-        </p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://js.stripe.com/v3/"></script>
     <script>
-        // Initialize Stripe (use your publishable key)
-        const stripe = Stripe('pk_live_51Rot4oJFioirLp8GF7O6F8kr0PLQwRRrRXCjoQCgj0LIqtGnm9mh0Km7zoRFtKHiIiiXS4dhVwTQQLmLhihDwoiR00W0pdTUAa');
-        const PREMIUM_PRICE_ID = 'price_1RvRIeJFioirLp8GzChWVboO';
+        const images = document.querySelectorAll(".gallery img");
+        let current = 0;
 
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
+        function showImage(index, direction = 'right') {
+            images.forEach((img, i) => {
+                if (i === index) {
+                    img.className = 'active';
+                } else {
+                    img.className = direction === 'right' ? 'hidden-right' : 'hidden-left';
+                }
+            });
         }
 
-        // Subscribe to Premium
-        async function subscribeToPremium() {
-            const btn = event.target.closest('button');
-            btn.classList.add('loading');
-            btn.disabled = true;
-
-            try {
-                // Check if user is signed in (you'll need to implement this check)
-                const userEmail = localStorage.getItem('userEmail') || '';
-                const userId = localStorage.getItem('userId') || '';
-
-                if (!userId) {
-                    alert('Please sign in first to upgrade to Premium');
-                    window.location.href = 'index.html';
-                    return;
-                }
-
-                // Redirect to Stripe Checkout
-                const { error } = await stripe.redirectToCheckout({
-                    lineItems: [{
-                        price: PREMIUM_PRICE_ID,
-                        quantity: 1
-                    }],
-                    mode: 'subscription',
-                    successUrl: window.location.origin + '/index.html?session_id={CHECKOUT_SESSION_ID}&premium=success',
-                    cancelUrl: window.location.origin + '/premium.html?cancelled=true',
-                    customerEmail: userEmail,
-                    clientReferenceId: userId
-                });
-
-                if (error) {
-                    console.error('Stripe error:', error);
-                    alert('Error: ' + error.message);
-                    btn.classList.remove('loading');
-                    btn.disabled = false;
-                }
-            } catch (err) {
-                console.error('Subscription error:', err);
-                alert('Failed to start subscription. Please try again.');
-                btn.classList.remove('loading');
-                btn.disabled = false;
-            }
+        function nextImage() {
+            const prev = current;
+            current = (current + 1) % images.length;
+            images[prev].className = 'hidden-left';
+            images[current].className = 'active';
         }
 
-        // Check URL parameters for cancellation
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('cancelled') === 'true') {
-            // Show a notification that the payment was cancelled
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: linear-gradient(135deg, #dc3545, #c82333);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
-                z-index: 2000;
-                animation: slideInRight 0.3s ease;
-            `;
-            notification.innerHTML = '<i class="fas fa-info-circle"></i> Payment cancelled. You can upgrade anytime!';
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
+        function prevImage() {
+            const prev = current;
+            current = (current - 1 + images.length) % images.length;
+            images[prev].className = 'hidden-right';
+            images[current].className = 'active';
         }
     </script>
 </body>

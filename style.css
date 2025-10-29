@@ -13,10 +13,29 @@ body {
     background:
         radial-gradient(circle at 20% 30%, rgba(255, 0, 149, 0.129), transparent 40%),
         radial-gradient(circle at 80% 40%, rgba(0, 200, 255, 0.2), transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(255, 213, 0, 0.2), transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(149, 255, 0, 0.114), transparent 40%),
         #000000;
     /* base pure black */
 
+}
+
+.display-mol {
+    position: absolute;
+    width: 1000px;
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+    animation: fadeInUp 0.8s ease;
+}
+
+.display-mol-2 {
+    position: absolute;
+    width: 1000px;
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+    animation: fadeInUp 0.8s ease;
+    filter: brightness(50%);
 }
 
 /* Navigation */
@@ -24,7 +43,7 @@ nav {
     position: fixed;
     width: 100%;
     padding: 20px 50px;
-    background: rgba(10, 14, 39, 0.95);
+    background: rgba(10, 20, 39, 0.607);
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
@@ -32,7 +51,7 @@ nav {
 
 nav.scrolled {
     padding: 15px 50px;
-    background: rgba(10, 14, 39, 0.98);
+    background: rgba(10, 14, 39, 0.309);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -118,10 +137,11 @@ nav.scrolled {
 .hero-text h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+    background: linear-gradient(135deg, #00b7ff 0%, #eafdff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: fadeInUp 0.8s ease;
+    text-shadow: 10px 10px 20px rgba(255, 255, 255, 0.389);
 }
 
 @keyframes fadeInUp {
@@ -295,11 +315,13 @@ nav.scrolled {
 .feature-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.676);
     border-radius: 20px;
     padding: 40px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .feature-card::before {
@@ -316,8 +338,8 @@ nav.scrolled {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 212, 255, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 38, 255, 0.1);
+    border-color: rgba(0, 213, 255, 0.577);
+    box-shadow: 0 10px 40px rgba(0, 183, 255, 0.1);
 }
 
 .feature-card:hover::before {
@@ -512,7 +534,6 @@ footer {
     margin-bottom: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
-
 }
 
 .faq-question {
@@ -523,11 +544,12 @@ footer {
     align-items: center;
     font-weight: 500;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.676);
 }
 
 .faq-question:hover {
     background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-5px);
 }
 
 .faq-answer {

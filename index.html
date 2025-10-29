@@ -30,7 +30,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Visualize & Edit Molecules in 3D</h1>
+                <h1>Edit molecules with ease. It's a piece of cake.</h1>
                 <p>ChopChopMol is a powerful GUI application for molecular visualization and editing, built with
                     Three.js for stunning 3D graphics and intuitive interaction.</p>
                 <div class="cta-buttons">
@@ -50,19 +50,19 @@
             <div class="feature-card">
                 <div class="feature-icon">🔬</div>
                 <h3>3D Visualization</h3>
-                <p>Render complex molecular structures in real-time 3D using Three.js. Rotate, zoom, and explore
+                <p>Render molecules in 3D using Three.js. Rotate, zoom, and explore
                     molecules from any angle with smooth performance.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">✏️</div>
                 <h3>Interactive Editing</h3>
-                <p>Add, remove, and modify atoms and bonds with intuitive click-and-drag controls. Build molecules from
-                    scratch or edit existing structures.</p>
+                <p>Add, remove, and modify atoms and bonds with intuitive click-and-drag controls. Edit existing
+                    structures with ease.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🎨</div>
                 <h3>Customizable Display</h3>
-                <p>Choose from multiple rendering styles including ball-and-stick, space-filling, and wireframe models.
+                <p>Choose from multiple rendering styles.
                     Customize colors and atom sizes.</p>
             </div>
             <div class="feature-card">
@@ -74,17 +74,22 @@
             <div class="feature-card">
                 <div class="feature-icon">💾</div>
                 <h3>File Support</h3>
-                <p>Import and export molecules in common formats including PDB, MOL, SDF, and XYZ. Save your work and
-                    share with colleagues.</p>
+                <p>Import and export molecules in common formats including PDB, MOL, and XYZ. Save your work securely
+                    and access it anywhere.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>High Performance</h3>
-                <p>Optimized rendering engine handles large molecules with thousands of atoms smoothly. GPU-accelerated
-                    graphics for best performance.</p>
+                <p>Optimized rendering handles large molecules with thousands of atoms smoothly.</p>
             </div>
         </div>
     </section>
+    <img src="Naph.png" alt="naph" class="display-mol" style="left: 50%; top:100px;">
+    <img src="Benzene.png" alt="benzene" class="display-mol" style="left: 0%; top:800px; width: 30%;">
+    <img src="Adrenaline.png" alt="adrenaline" class="display-mol" style="left: 60%; top:1500px; width: 50%;">
+    <img src="Hexane.png" alt="benzene" class="display-mol-2" style="left: 50%; top:800px; width: 20%;">
+    <img src="Glucose.png" alt="adrenaline" class="display-mol-2" style="left: 50%; top:1500px; width: 20%;">
+
 
     <section class="faq-section" id="usage">
         <h2>Main Features</h2>
@@ -196,67 +201,7 @@
         </div>
     </footer>
 
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Generate particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Animate molecules on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease both';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
-        }
-
-        // Interactive molecule rotation effect
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

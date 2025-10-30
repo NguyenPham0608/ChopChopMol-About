@@ -28,17 +28,6 @@ body {
     animation: fadeInUp 0.8s ease;
 }
 
-.display-mol-2 {
-    position: absolute;
-    width: 1000px;
-    height: auto;
-    pointer-events: none;
-    z-index: -1;
-    animation: fadeInUp 0.8s ease;
-    filter: brightness(50%);
-}
-
-/* Navigation */
 nav {
     position: fixed;
     width: 100%;
